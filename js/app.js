@@ -1,10 +1,27 @@
 
   //Traer elementos del HTML
+  var $nameInput = $("#name-input");
+  var $phoneInput = $("#phone-input");
+  
+
   
   
   var loadPage = function () {
-    
-  };
+    $(".modal").modal();
+    $nameInput.keyup(validateContact);
+    $phoneInput.keyup(validateContact);
+    };
+
+  var validateContact = function () {
+    //En esta funcion tenemos que validar que el usuario ingrese datos y no valores vacios
+    var $containerAddContact = $("#add-contact");
+    if($(this).val().trim().length > 0){
+      $containerAddContact.removeAttr("disabled");
+    }  else{
+      $containerAddContact.Attr("disabled", true);
+    }
+  }; 
+
 
   var paintContactsInHTML = function(contact) {
    
@@ -40,9 +57,6 @@
   
 
 
-  var validateContact = function () {
-    //En esta funcion tenemos que validar que el usuario ingrese datos y no valores vacios
-  };
 
 
   var filterContacts = function() {
